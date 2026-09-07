@@ -15,8 +15,8 @@ const Header = () => {
   }, []);
 
   const links = [
-    { label: "Our Impact", to: "/ourmission" },
-    { label: "Give Hope", to: "/donate" },
+    { label: "Il nostro impatto", to: "/ourmission" },
+    { label: "Dona speranza", to: "/donate" },
   ];
 
   const isActive = (to: string) => location.pathname === to || location.pathname.startsWith(to + "/");
@@ -59,7 +59,7 @@ const Header = () => {
         <button
           className="lg:hidden w-10 h-10 flex items-center justify-center text-cream"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
+          aria-label="Apri menu"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
