@@ -7,18 +7,18 @@ import ourStoryBg from "@/assets/our-story-bg.jpg";
 const goals = [
   {
     num: "01",
-    title: "Education Access",
-    desc: "We believe education is the foundation of opportunity. From building classrooms in rural villages to providing scholarships for displaced students, we're removing barriers to learning. Our programs support over 15,000 students annually with school supplies, teacher training, and digital literacy initiatives. By investing in education today, we're creating community leaders, healthcare workers, and innovators for tomorrow.",
+    title: "Accesso all'istruzione",
+    desc: "Crediamo che l'istruzione sia la base di ogni opportunità. Dalla costruzione di aule nei villaggi rurali alle borse di studio per studenti sfollati, rimuoviamo le barriere all'apprendimento. I nostri programmi sostengono ogni anno oltre 15.000 studenti con materiale scolastico, formazione per insegnanti e alfabetizzazione digitale. Investire nell'istruzione oggi significa formare i leader, gli operatori sanitari e gli innovatori di domani.",
   },
   {
     num: "02",
-    title: "Healthcare Equity",
-    desc: "Quality healthcare shouldn't depend on where you're born. Our mobile clinics bring essential medical services to remote communities, while our maternal health programs have reduced infant mortality by 40% in partner regions. We train local healthcare workers, establish wellness centers, and provide life-saving medications. From preventive care to emergency response, we're building healthcare systems that serve everyone with dignity and compassion.",
+    title: "Equità nelle cure",
+    desc: "La qualità delle cure non deve dipendere dal luogo in cui si nasce. Le nostre cliniche mobili portano servizi medici essenziali nelle comunità più remote, mentre i programmi di salute materna hanno ridotto del 40% la mortalità infantile nelle regioni partner. Formiamo operatori sanitari locali, apriamo centri di assistenza e distribuiamo farmaci salvavita. Dalla prevenzione all'emergenza, costruiamo sistemi sanitari che accolgono tutti con dignità e umanità.",
   },
   {
     num: "03",
-    title: "Economic Empowerment",
-    desc: "Sustainable change requires economic independence. Our microfinance programs and vocational training centers have helped 8,000+ families start small businesses and gain stable income. We support women entrepreneurs, teach marketable skills, and create fair-wage employment opportunities. By fostering local economies rather than creating dependency, we're helping communities build self-sufficient, prosperous futures.",
+    title: "Autonomia economica",
+    desc: "Un cambiamento sostenibile richiede indipendenza economica. I nostri programmi di microcredito e i centri di formazione professionale hanno aiutato oltre 8.000 famiglie ad avviare piccole attività e ottenere un reddito stabile. Sosteniamo le imprenditrici, insegniamo competenze richieste dal mercato e creiamo lavoro con salari equi. Rafforzando le economie locali invece di creare dipendenza, aiutiamo le comunità a costruire un futuro autonomo e prospero.",
   },
 ];
 
@@ -56,7 +56,7 @@ const OurMission = () => (
         <DecorativeCircles className="absolute bottom-0 left-1/4 translate-y-1/4 w-[400px] h-[400px] text-olive-500 pointer-events-none" />
 
         <h1 className="relative z-10 font-serif text-7xl md:text-8xl lg:text-9xl text-cream tracking-tight">
-          Our Mission
+          La nostra missione
         </h1>
       </section>
 
@@ -66,7 +66,7 @@ const OurMission = () => (
         <DecorativeCircles className="absolute -top-40 -right-40 w-[500px] h-[500px] text-olive-600 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-serif text-5xl md:text-6xl text-olive-900 mb-16">Our goals</h2>
+          <h2 className="font-serif text-5xl md:text-6xl text-olive-900 mb-16">I nostri obiettivi</h2>
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-12">
             {goals.map((g) => (
               <div key={g.num}>
@@ -92,7 +92,7 @@ const OurMission = () => (
           <div className="absolute inset-0 bg-olive-950/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-olive-950/70 via-transparent to-transparent" />
           <h2 className="absolute bottom-8 left-8 right-8 font-serif text-4xl md:text-5xl lg:text-6xl text-cream z-10">
-            How it all started
+            Come è iniziato tutto
           </h2>
         </div>
 
@@ -100,12 +100,12 @@ const OurMission = () => (
         <div className="bg-tan/30 flex flex-col justify-center px-10 lg:px-16 py-16">
           <Flame className="w-12 h-12 text-olive-600 mb-6" />
           <p className="text-sm md:text-base text-olive-700 leading-relaxed max-w-lg">
-            Ember Foundation began in 2018 when founder Maya Rodriguez witnessed firsthand the devastating
-            impact of limited resources in rural Guatemala. What started as a single classroom project has
-            grown into a global movement spanning three continents. We work hand-in-hand with local
-            communities, ensuring every initiative is culturally sensitive, sustainable, and community-led.
-            Our approach isn't about imposing solutions—it's about amplifying the incredible resilience
-            and vision of the people we serve.
+            Ember Foundation è nata nel 2018, quando la fondatrice Maya Rodriguez ha visto in prima persona
+            l'impatto devastante della mancanza di risorse nelle zone rurali del Guatemala. Quello che era il
+            progetto di una singola aula è diventato un movimento globale presente in tre continenti. Lavoriamo
+            fianco a fianco con le comunità locali, perché ogni iniziativa sia rispettosa della cultura,
+            sostenibile e guidata dalle persone del posto. Non imponiamo soluzioni: diamo voce alla straordinaria
+            forza e visione di chi accompagniamo.
           </p>
         </div>
       </section>

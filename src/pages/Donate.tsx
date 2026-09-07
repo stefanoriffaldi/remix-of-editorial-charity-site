@@ -5,7 +5,7 @@ import donateHero from "@/assets/donate-hero.jpg";
 import handsPlanting from "@/assets/hands-planting.jpg";
 
 const presetAmounts = [10, 20, 30, 40];
-const frequencies = ["One-Time Donation", "Monthly Giving", "Annual Contribution"];
+const frequencies = ["Donazione una tantum", "Donazione mensile", "Contributo annuale"];
 
 const Donate = () => {
   const [selected, setSelected] = useState(10);
@@ -15,7 +15,7 @@ const Donate = () => {
 
   const total = useCustom ? parseFloat(custom) || 0 : selected;
 
-  const marqueeText = "Your donation matters";
+  const marqueeText = "La tua donazione conta";
 
   return (
     <>
@@ -27,7 +27,7 @@ const Donate = () => {
           <div className="absolute inset-0 bg-olive-950/60" />
           <div className="absolute inset-0 bg-gradient-to-b from-olive-950/30 via-transparent to-olive-950/50" />
           <h1 className="relative z-10 font-serif text-6xl md:text-8xl text-cream text-center leading-tight">
-            Make a<br />difference
+            Fai la<br />differenza
           </h1>
         </section>
 
@@ -55,7 +55,7 @@ const Donate = () => {
             <div className="absolute inset-0 bg-olive-950/30" />
             <div className="absolute inset-0 flex items-center justify-center p-10">
               <h2 className="font-serif text-4xl md:text-5xl text-cream text-center leading-snug max-w-md">
-                Every dollar you donate supports our cause
+                Ogni euro che doni sostiene la nostra causa
               </h2>
             </div>
           </div>
@@ -79,7 +79,7 @@ const Donate = () => {
                       <span className="w-2 h-2 bg-cream block" />
                     )}
                   </span>
-                  <span className="font-serif text-lg text-olive-900">${amt.toFixed(2)}</span>
+                  <span className="font-serif text-lg text-olive-900">{amt.toFixed(2)}€</span>
                 </label>
               ))}
               <label
@@ -93,13 +93,13 @@ const Donate = () => {
                 >
                   {useCustom && <span className="w-2 h-2 bg-cream block" />}
                 </span>
-                <span className="font-serif text-lg text-olive-900">Custom Amount</span>
+                <span className="font-serif text-lg text-olive-900">Importo libero</span>
               </label>
               {useCustom && (
                 <input
                   type="number"
                   min="1"
-                  placeholder="Enter amount"
+                  placeholder="Inserisci importo"
                   value={custom}
                   onChange={(e) => setCustom(e.target.value)}
                   autoFocus
@@ -121,13 +121,13 @@ const Donate = () => {
 
             {/* Total */}
             <div className="flex justify-between items-center mb-6 max-w-xs">
-              <span className="text-base font-medium text-olive-900">Total</span>
-              <span className="text-base font-serif text-olive-900">${total.toFixed(2)}</span>
+              <span className="text-base font-medium text-olive-900">Totale</span>
+              <span className="text-base font-serif text-olive-900">{total.toFixed(2)}€</span>
             </div>
 
             {/* Donate button */}
             <button className="border-2 border-olive-900 text-olive-900 hover:bg-olive-900 hover:text-cream px-8 py-3 text-sm tracking-widest uppercase font-medium transition-all duration-300 w-fit rounded-full">
-              Donate
+              Dona
             </button>
           </div>
         </section>
