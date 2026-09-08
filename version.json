@@ -1,7 +1,7 @@
 {
-  "commit": "a71fc04d513eef5cf2fc97e5bc5d84f915dd9007",
-  "commit_short": "a71fc04",
-  "message": "github build cicd",
-  "built_at": "2026-09-07T15:05:56Z",
-  "run": "https://github.com/stefanoriffaldi/remix-of-editorial-charity-site/actions/runs/34136493498"
+  "commit": "ea8003b08d5a093d7a5cbd26db671ad5ab489afd",
+  "commit_short": "ea8003b",
+  "message": "Interruttori delle notifiche via variabili di repo",
+  "built_at": "2026-09-08T07:42:10Z",
+  "run": "https://github.com/stefanoriffaldi/remix-of-editorial-charity-site/actions/runs/34200645966"
 }
