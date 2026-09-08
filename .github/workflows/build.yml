@@ -33,6 +33,13 @@
 # VARIABLE richieste (stessa pagina, tab Variables — NON fra i Secrets):
 #   NOTIFY_FROM      mittente della mail
 #   NOTIFY_TO        destinatari separati da virgola (Digitag + noi)
+#   MAIL_ON_SUCCESS  interruttore: mail quando il build passa
+#   MAIL_ON_FAILURE  interruttore: mail quando il build fallisce o è annullato
+#
+# I DUE INTERRUTTORI valgono `false` se vuoti o assenti: un repo senza queste
+# variabili builda e pubblica in silenzio. Con entrambi spenti viene saltata
+# anche la verifica della configurazione delle notifiche, quindi i quattro
+# secret qui sopra servono solo se almeno un interruttore è acceso.
 #
 # Le action sono pinnate al tag major: per la produzione conviene pinnare al SHA.
 
@@ -76,16 +83,53 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Sta prima del checkout perché non gli serve il repo, e perché il ramo KO
+      # deve poter notificare anche quando è il checkout a fallire: se questo
+      # step non girasse, i suoi output sarebbero vuoti e la mail non partirebbe.
+      #
+      # Vuoto o variabile assente = spento. Accetta true/1/yes/on/si in
+      # qualunque combinazione di maiuscole: il caso ambiguo — `TRUE` letto come
+      # falso — spegnerebbe le notifiche senza dirlo a nessuno.
+      - name: Leggi gli interruttori delle notifiche
+        id: flags
+        env:
+          MAIL_ON_SUCCESS: ${{ vars.MAIL_ON_SUCCESS }}
+          MAIL_ON_FAILURE: ${{ vars.MAIL_ON_FAILURE }}
+        run: |
+          acceso() {
+            case "$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')" in
+              true|1|yes|on|si) echo true ;;
+              *) echo false ;;
+            esac
+          }
+          ok=$(acceso "$MAIL_ON_SUCCESS")
+          ko=$(acceso "$MAIL_ON_FAILURE")
+          if [ "$ok" = true ] || [ "$ko" = true ]; then any=true; else any=false; fi
+          {
+            echo "on_success=$ok"
+            echo "on_failure=$ko"
+            echo "any=$any"
+          } >> "$GITHUB_OUTPUT"
+          echo "MAIL_ON_SUCCESS=$ok  (valore letto: '$MAIL_ON_SUCCESS')"
+          echo "MAIL_ON_FAILURE=$ko  (valore letto: '$MAIL_ON_FAILURE')"
+          if [ "$any" = false ]; then
+            echo "::notice::Notifiche disattivate: il build gira e pubblica, ma non spedisce nulla e non verifica la configurazione delle notifiche."
+          fi
+
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Un job non deve poter andare verde senza aver notificato. `to` è
+      # Un job non deve poter andare verde senza aver notificato — ma solo se
+      # una notifica è stata chiesta: con entrambi gli interruttori spenti questo
+      # step non gira, perché la configurazione SMTP non servirebbe a nulla. Il
+      # presidio vale quindi finché almeno un interruttore è acceso. `to` è
       # dichiarato `required: false` nell'action, e GitHub non valida comunque i
       # campi `required`: con NOTIFY_TO vuoto il build resta verde e non spedisce
       # nulla. Errore tipico: NOTIFY_FROM/NOTIFY_TO creati come *secrets* invece
       # che come *variables*, perché qui si leggono con `vars.`.
       # Sta in testa al job per fallire in pochi secondi, non dopo il build.
       - name: Verifica la configurazione delle notifiche
+        if: steps.flags.outputs.any == 'true'
         env:
           NOTIFY_FROM: ${{ vars.NOTIFY_FROM }}
           NOTIFY_TO: ${{ vars.NOTIFY_TO }}
@@ -219,10 +263,12 @@ jobs:
       # Notifiche: due step mutuamente esclusivi, uno per esito.
       #   OK  -> `success()`               : messaggio completo
       #   KO  -> `failure() || cancelled()`: messaggio minimale
-      # Insieme coprono ogni conclusione, come `always()` faceva prima: il
-      # requisito R12 chiede la notifica a ogni build, quindi l'annullamento
-      # (che con `cancel-in-progress: true` capita quando Lovable fa due push
-      # ravvicinati) va nel ramo KO e non resta silenzioso.
+      # Ciascuno dei due è subordinato al proprio interruttore, quindi le due
+      # notifiche si accendono e si spengono in modo indipendente.
+      # Con entrambi accesi coprono ogni conclusione, come `always()` faceva
+      # prima: il requisito R12 chiede la notifica a ogni build, quindi
+      # l'annullamento (che con `cancel-in-progress: true` capita quando
+      # Lovable fa due push ravvicinati) va nel ramo KO e non resta silenzioso.
       #
       # v3 dichiarava `using: node20` ed è l'origine del warning di deprecazione;
       # v18 gira su node24. Gli input usati qui sono gli stessi nelle due versioni.
@@ -233,7 +279,7 @@ jobs:
       # ---------------------------------------------------------------------
 
       - name: Notifica via mail (build ok)
-        if: success()
+        if: success() && steps.flags.outputs.on_success == 'true'
         uses: dawidd6/action-send-mail@v18
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
@@ -263,7 +309,7 @@ jobs:
       # Corpo minimale, ma con le due informazioni che servono davvero a chi
       # riceve la mail: che la modifica non è online, e dove guardare.
       - name: Notifica via mail (build ko)
-        if: failure() || cancelled()
+        if: (failure() || cancelled()) && steps.flags.outputs.on_failure == 'true'
         uses: dawidd6/action-send-mail@v18
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
