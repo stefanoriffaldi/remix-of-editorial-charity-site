@@ -23,8 +23,8 @@ const HeroSection = () => (
 
     <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16">
-        <h1 className="font-serif text-7xl md:text-[9rem] leading-[0.85] text-cream/90 tracking-tight">Ogni</h1>
-        <h1 className="font-serif text-7xl md:text-[9rem] leading-[0.85] text-cream/90 tracking-tight md:text-right">Scintilla</h1>
+        <h1 className="font-serif text-6xl md:text-[7rem] leading-[0.85] text-cream/90 tracking-tight">Ogni piccolo</h1>
+        <p className="font-serif text-6xl md:text-[7rem] leading-[0.85] text-cream/90 tracking-tight md:text-right">gesto conta</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
         <p className="text-cream/60 text-sm md:text-base leading-relaxed max-w-sm">
