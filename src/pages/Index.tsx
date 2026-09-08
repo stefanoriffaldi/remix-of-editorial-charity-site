@@ -86,8 +86,11 @@ const CTASection = () => (
     <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
       <Heart className="w-10 h-10 text-olive-700 mb-8 mx-auto" />
       <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-olive-900 leading-tight max-w-3xl mx-auto mb-12">
-        Il 100% delle donazioni va direttamente alle comunità che ne hanno bisogno.
+        Il 100% delle donazioni va direttamente alle comunità che ne hanno bisogno.<sup className="text-2xl align-super">*</sup>
       </h2>
+      <p className="text-[10px] leading-snug text-olive-700/70 max-w-md mx-auto mb-10">
+        * al netto delle nostre spese di gestione interne che potrebbero pareggiare o superare il totale ricevuto 😈
+      </p>
       <Link to="/donate" className="inline-block border-2 border-olive-900 text-olive-900 hover:bg-olive-900 hover:text-cream px-10 py-3.5 text-sm tracking-widest uppercase transition-all duration-300 rounded-full">
         Dona
       </Link>
