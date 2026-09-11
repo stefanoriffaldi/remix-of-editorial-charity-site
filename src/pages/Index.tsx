@@ -174,6 +174,7 @@ const Index = () => (
       <MarqueeSection />
       <OurStorySection />
       <DigitalSection />
+      <NatureSection />
       <CTASection />
     </main>
     <Footer />
