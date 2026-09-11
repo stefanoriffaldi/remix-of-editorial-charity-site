@@ -138,6 +138,31 @@ const NatureSection = () => (
   </section>
 );
 
+const HeritageSection = () => (
+  <section className="bg-olive-950 py-20 md:py-28 px-6">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-6 order-2 lg:order-1">
+        <span className="text-xs tracking-widest uppercase text-cream/50">Patrimonio e comunità</span>
+        <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight">
+          Luoghi che tengono unite le persone
+        </h2>
+        <p className="text-cream/70 text-base leading-relaxed max-w-lg">
+          Cappelle, piazze e piccoli edifici storici sono il cuore di molte comunità: lì si
+          incontrano le famiglie, si organizzano i corsi, si custodisce la memoria di un
+          territorio. Recuperiamo e restituiamo alla vita quotidiana questi spazi, perché
+          prendersi cura di un luogo significa prendersi cura di chi lo abita.
+        </p>
+      </div>
+      <img
+        src="https://staging.derma.it/wp-content/uploads/2026/09/cappella.jpg"
+        alt="Cappella storica immersa nel paesaggio"
+        loading="lazy"
+        className="w-full h-72 md:h-[28rem] object-cover rounded-sm order-1 lg:order-2"
+      />
+    </div>
+  </section>
+);
+
 const CTASection = () => (
   <section className="bg-cream-dark">
     <div className="border-b border-olive-800/15 px-6 py-4">
@@ -175,6 +200,7 @@ const Index = () => (
       <OurStorySection />
       <DigitalSection />
       <NatureSection />
+      <HeritageSection />
       <CTASection />
     </main>
     <Footer />
