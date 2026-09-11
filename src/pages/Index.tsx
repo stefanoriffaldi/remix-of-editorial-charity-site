@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 
 import communityGathering from "@/assets/community-gathering.jpg";
 import ourStoryBg from "@/assets/our-story-bg.jpg";
+import exampleFileAsset from "@/assets/example-file.jpg.asset.json";
+import kitchenTabletAsset from "@/assets/kitchen-tablet.jpg.asset.json";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -78,6 +80,38 @@ const OurStorySection = () => (
   </section>
 );
 
+const DigitalSection = () => (
+  <section className="bg-olive-950 py-20 md:py-28 px-6">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-6">
+        <span className="text-xs tracking-widest uppercase text-cream/50">Formazione digitale</span>
+        <h2 className="font-serif text-4xl md:text-6xl text-cream leading-tight">
+          Dalla cucina di casa alle competenze di domani
+        </h2>
+        <p className="text-cream/70 text-base leading-relaxed max-w-lg">
+          Portiamo strumenti e connessione dove prima non arrivavano: un tablet sul tavolo di casa
+          diventa un'aula, un corso di alfabetizzazione digitale, una ricetta condivisa tra famiglie.
+          Le nostre risorse online sono gratuite, semplici e pensate per chi inizia da zero.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <img
+          src={kitchenTabletAsset.url}
+          alt="Un tablet appoggiato sul piano della cucina accanto a una confezione di uova"
+          loading="lazy"
+          className="w-full h-64 sm:h-80 object-cover"
+        />
+        <img
+          src={exampleFileAsset.url}
+          alt="Grafica colorata con il logo dei nostri materiali didattici scaricabili"
+          loading="lazy"
+          className="w-full h-64 sm:h-80 object-cover"
+        />
+      </div>
+    </div>
+  </section>
+);
+
 const CTASection = () => (
   <section className="bg-cream-dark">
     <div className="border-b border-olive-800/15 px-6 py-4">
@@ -105,6 +139,7 @@ const Index = () => (
       <HeroSection />
       <MarqueeSection />
       <OurStorySection />
+      <DigitalSection />
       <CTASection />
     </main>
     <Footer />
