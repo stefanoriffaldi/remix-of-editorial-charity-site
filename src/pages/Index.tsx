@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 
 import communityGathering from "@/assets/community-gathering.jpg";
 import ourStoryBg from "@/assets/our-story-bg.jpg";
+import exampleFileAsset from "@/assets/example-file.jpg.asset.json";
+import kitchenTabletAsset from "@/assets/kitchen-tablet.jpg.asset.json";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center overflow-hidden">
