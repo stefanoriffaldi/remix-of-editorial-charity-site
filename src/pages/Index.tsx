@@ -113,6 +113,31 @@ const DigitalSection = () => (
   </section>
 );
 
+const NatureSection = () => (
+  <section className="bg-cream py-20 md:py-28 px-6">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <img
+        src="/pappagallo.jpg"
+        alt="Pappagallo dai colori vivaci appoggiato su un ramo"
+        loading="lazy"
+        className="w-full h-72 md:h-[28rem] object-cover rounded-sm"
+      />
+      <div className="space-y-6">
+        <span className="text-xs tracking-widest uppercase text-olive-700">Biodiversità</span>
+        <h2 className="font-serif text-4xl md:text-6xl text-olive-900 leading-tight">
+          Proteggere la natura significa proteggere le persone
+        </h2>
+        <p className="text-olive-700 text-base leading-relaxed max-w-lg">
+          Le foreste che ospitano specie straordinarie come questa sono anche la casa, la
+          medicina e il cibo di migliaia di famiglie. Lavoriamo con le comunità locali per
+          tutelare gli habitat, contrastare il commercio illegale di animali e creare
+          alternative economiche sostenibili.
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
 const CTASection = () => (
   <section className="bg-cream-dark">
     <div className="border-b border-olive-800/15 px-6 py-4">
