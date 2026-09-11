@@ -7,7 +7,7 @@ import communityGathering from "@/assets/community-gathering.jpg";
 import ourStoryBg from "@/assets/our-story-bg.jpg";
 import exampleFileAsset from "@/assets/example-file.jpg.asset.json";
 import kitchenTabletAsset from "@/assets/kitchen-tablet.jpg.asset.json";
-import checkMarkAsset from "@/assets/check-mark.jpg.asset.json";
+
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -131,7 +131,7 @@ const CTASection = () => (
           Dona
         </Link>
         <img
-          src={checkMarkAsset.url}
+          src="/check-mark-icon-vector.jpg"
           alt="Simbolo di spunta che certifica la trasparenza delle donazioni"
           loading="lazy"
           className="w-12 h-12 object-contain mix-blend-multiply"
