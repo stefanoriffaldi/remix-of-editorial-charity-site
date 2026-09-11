@@ -7,6 +7,7 @@ import communityGathering from "@/assets/community-gathering.jpg";
 import ourStoryBg from "@/assets/our-story-bg.jpg";
 import exampleFileAsset from "@/assets/example-file.jpg.asset.json";
 import kitchenTabletAsset from "@/assets/kitchen-tablet.jpg.asset.json";
+import checkMarkAsset from "@/assets/check-mark.jpg.asset.json";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -125,9 +126,17 @@ const CTASection = () => (
       <p className="text-[10px] leading-snug text-olive-700/70 max-w-md mx-auto mb-10">
         * al netto delle nostre spese di gestione interne che potrebbero pareggiare o superare il totale ricevuto 😈
       </p>
-      <Link to="/donate" className="inline-block border-2 border-olive-900 text-olive-900 hover:bg-olive-900 hover:text-cream px-10 py-3.5 text-sm tracking-widest uppercase transition-all duration-300 rounded-full">
-        Dona
-      </Link>
+      <div className="flex items-center justify-center gap-4">
+        <Link to="/donate" className="inline-block border-2 border-olive-900 text-olive-900 hover:bg-olive-900 hover:text-cream px-10 py-3.5 text-sm tracking-widest uppercase transition-all duration-300 rounded-full">
+          Dona
+        </Link>
+        <img
+          src={checkMarkAsset.url}
+          alt="Simbolo di spunta che certifica la trasparenza delle donazioni"
+          loading="lazy"
+          className="w-12 h-12 object-contain mix-blend-multiply"
+        />
+      </div>
     </div>
   </section>
 );
