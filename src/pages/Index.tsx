@@ -139,6 +139,7 @@ const Index = () => (
       <HeroSection />
       <MarqueeSection />
       <OurStorySection />
+      <DigitalSection />
       <CTASection />
     </main>
     <Footer />
